@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nuestra boda</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:ital@0;1&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="branch" viewBox="0 0 400 200"><g fill="currentColor"><path d="M0 120C80 100 200 90 390 20" stroke="currentColor" stroke-width="3" fill="none"/><path d="M60 108c-12-34 6-52 30-60 8 30-4 52-30 60z"/><path d="M110 100c-8-36 14-56 40-60 4 30-8 54-40 60z"/><path d="M165 88c-4-34 20-52 46-54 0 30-14 50-46 54z"/><path d="M225 70c2-32 26-46 52-44-4 28-20 46-52 44z"/><path d="M285 50c6-30 30-40 54-34-8 26-26 40-54 34z"/><path d="M80 118c20 20 46 22 66 6-14-22-42-26-66-6z"/><path d="M150 102c22 18 50 16 66-2-16-20-44-22-66 2z"/></g></symbol>
+<symbol id="anth" viewBox="0 0 100 110"><path d="M50 104C8 78-6 36 26 10 42-2 50 18 50 18S58-2 74 10c32 26 18 68-24 94z" fill="currentColor"/><path d="M50 98C46 70 44 44 62 22" stroke="#d8c78a" stroke-width="5" stroke-linecap="round" fill="none"/></symbol>
+<symbol id="tassel" viewBox="0 0 34 70"><circle cx="17" cy="4" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M14 10h6l2 10H12z" fill="currentColor"/><path d="M12 22h10l6 40c-3 4-9 6-11 6s-8-2-11-6z" fill="currentColor" opacity=".9"/></symbol>
+<symbol id="i0" viewBox="0 0 44 44"><path d="M8 40V18a14 14 0 0 1 28 0v22M13 40V19a9 9 0 0 1 18 0v21M22 6l-3-3 3-3 3 3z"/></symbol>
+<symbol id="i1" viewBox="0 0 44 44"><path d="M8 6h10l-1 12a4 4 0 0 1-8 0zM13 22v14M8 36h10M26 10h10l-1 12a4 4 0 0 1-8 0zM31 26v10M26 36h10"/></symbol>
+<symbol id="i2" viewBox="0 0 44 44"><path d="M5 10h14l-1 10a6 6 0 0 1-12 0zM25 10h14l-1 10a6 6 0 0 1-12 0zM12 26v10M7 36h10M32 26v10M27 36h10"/></symbol>
+<symbol id="i3" viewBox="0 0 44 44"><circle cx="22" cy="22" r="11"/><circle cx="22" cy="22" r="6"/><path d="M6 8v28M40 8v28"/></symbol>
+<symbol id="i4" viewBox="0 0 44 44"><path d="M22 6v10M22 28v10M6 22h10M28 22h10M11 11l7 7M26 26l7 7M33 11l-7 7M18 26l-7 7"/></symbol>
+<symbol id="olivo" viewBox="0 0 40 90">
+  <path d="M20 88C14 62 16 34 26 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  <g fill="currentColor">
+    <ellipse cx="11" cy="66" rx="4" ry="9" transform="rotate(-35 11 66)"/>
+    <ellipse cx="25" cy="58" rx="4" ry="9" transform="rotate(35 25 58)"/>
+    <ellipse cx="10" cy="45" rx="4" ry="9" transform="rotate(-35 10 45)"/>
+    <ellipse cx="25" cy="38" rx="4" ry="9" transform="rotate(35 25 38)"/>
+    <ellipse cx="14" cy="24" rx="3.5" ry="8" transform="rotate(-35 14 24)"/>
+    <ellipse cx="28" cy="16" rx="3.5" ry="8" transform="rotate(30 28 16)"/>
+  </g>
+</symbol>
+</svg>
+<svg class="deco a" viewBox="0 0 400 200" aria-hidden="true"><use href="#branch"/></svg>
+<svg class="deco b" viewBox="0 0 400 200" aria-hidden="true"><use href="#branch"/></svg>
+
+<div id="intro">
+  <h2>NUESTRA BODA</h2>
+  <div class="env">
+    <div class="flap">
+      <div class="mono">
+        <svg class="olivo" viewBox="0 0 40 90" aria-hidden="true"><use href="#olivo"/></svg>
+        <span id="m1">V</span><i></i><span id="m2">D</span>
+        <svg class="olivo esp" viewBox="0 0 40 90" aria-hidden="true"><use href="#olivo"/></svg>
+      </div>
+    </div>
+    <button class="seal" id="seal" aria-label="Abrir la invitación"></button>
+  </div>
+  <p class="hint">Toca el sello para abrir la invitación</p>
+  <p class="cupos" id="cuposBox"><span class="hint">Hemos reservado</span><br><b id="cupos">2</b><br><span class="hint">cupos para ti</span></p>
+</div>
+
+<main class="page">
+  <section class="hero">
+    <p class="honor script">Tenemos el honor de invitarte a nuestra boda</p>
+    <h1><span id="n1">Priscilla</span><i>y</i><span id="n2">Nelson</span></h1>
+    <p class="fecha" id="fechaTxt"></p>
+  </section>
+
+  <section class="blk" aria-labelledby="hCount">
+    <h2 id="hCount">Faltan</h2>
+    <div class="count" role="timer" aria-live="off">
+      <div><strong id="cM">0</strong><span>meses</span></div><div><strong id="cD">0</strong><span>días</span></div><div><strong id="cH">0</strong><span>horas</span></div><div><strong id="cMin">0</strong><span>minutos</span></div><div><strong id="cS">0</strong><span>segundos</span></div>
+    </div>
+    <p class="done" id="done" hidden>¡Hoy es el gran día!</p>
+  </section>
+
+  <section class="torn"><div class="paper">
+    <h2>Ceremonia y recepción</h2>
+    <div class="vrow"><span class="vtime" id="hCer"></span><hr><div><b>Parroquia Nuestra Señora</b><span>Dirección de la ceremonia, ciudad</span></div></div>
+    <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Parroquia">Ver ubicación</a>
+    <div class="vrow" style="margin-top:2rem"><span class="vtime" id="hRec"></span><hr><div><b>Jardín Los Olivos</b><span>Dirección de la recepción, ciudad</span></div></div>
+    <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Jardin+Los+Olivos">Ver ubicación</a>
+  </div></section>
+
+  <section class="blk" aria-labelledby="hIt">
+    <h2 id="hIt">Itinerario</h2>
+    <ul class="tl" id="tl"></ul>
+  </section>
+
+  <section class="blk">
+    <svg class="leaf" style="top:-34px;right:6px;rotate:-15deg" viewBox="0 0 100 110" aria-hidden="true"><use href="#anth"/></svg>
+    <svg width="46" height="46" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M3 9h18v4H3zM4 14h16v7H4zM11 9h2v12h-2zM12 9C9 3 5 5 6.5 7.5 7.5 9 10 9 12 9zm0 0c3-6 7-4 5.500-1.500C16.500 9 14 9 12 9z"/></svg>
+    <h2 style="font-size:1.5rem;letter-spacing:.02em;text-transform:none;margin-top:.6rem">¿Quieres ser parte de nuestra historia de amor?</h2>
+    <p>Ayúdanos a escribir el próximo capítulo con tu contribución en efectivo para nuestra luna de miel. Tu presencia es nuestro mejor regalo.</p>
+  </section>
+  <section class="torn"><div class="paper">
+    <h2>Transferencia</h2>
+    <p class="bank">Cuenta de banco<br><br>Nombre del banco<br>Cuenta IBAN: CR00 0000 0000 0000<br>SINPE Móvil: 0000-0000<br>Nombre del titular</p>
+  </div></section>
+
+  <section class="blk" aria-labelledby="hVest">
+    <h2 id="hVest" style="margin-bottom:.4rem">Formal</h2>
+    <p>Algunas ideas de colores para acompañarnos:</p>
+    <div class="sw" aria-label="Colores sugeridos"><i style="background:#6F8F7A"></i><i style="background:#D9A0A7"></i><i style="background:#B8924A"></i><i style="background:#3A4A43"></i></div>
+    <div class="plaque">Código<br>de<br>vestimenta<svg viewBox="0 0 34 70" aria-hidden="true"><use href="#tassel"/></svg></div>
+  </section>
+  <section class="torn" style="margin-top:5rem"><div class="paper"><p style="margin:0">Por favor, evita usar cualquier tono de blanco, marfil o crema, ya que es el color reservado para la novia.</p></div></section>
+
+  <section class="envf" id="confirmar" aria-labelledby="hConf">
+    <div class="torn"><div class="paper">
+      <h2 id="hConf">Confirmar asistencia</h2>
+      <p>Agradecemos que confirmes tu asistencia antes del <span id="limite"></span>.</p>
+      <form id="rsvp" novalidate>
+        <div class="f"><label for="nombre">Nombre completo</label><input id="nombre" type="text" autocomplete="name" required><p class="err" id="eNombre"></p></div>
+        <fieldset><legend>¿Nos acompañarás?</legend>
+          <div class="opts"><label><input type="radio" name="asiste" value="Sí, ahí estaré"> Sí, ahí estaré</label><label><input type="radio" name="asiste" value="No podré asistir"> No podré asistir</label></div><p class="err" id="eAsiste"></p></fieldset>
+        <div class="f" id="gAcomp"><label for="acomp">Acompañantes</label><input id="acomp" type="number" min="0" max="1" value="0"></div>
+        <div class="f"><label for="msg">Mensaje para los novios (opcional)</label><textarea id="msg" rows="3"></textarea></div>
+        <button class="btn solid" type="submit">Confirmar asistencia</button>
+      </form>
+      <div id="thanks" hidden><h2>¡Gracias, <span id="tNombre"></span>!</h2><p id="tTxt"></p><a class="btn solid" id="wa" target="_blank" rel="noopener" href="#">Enviar por WhatsApp</a></div>
+    </div></div>
+    <div class="seal" aria-hidden="true"></div>
+  </section>
+
+  <footer><p>¡Te esperamos!</p></footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
