@@ -10,9 +10,9 @@ $("n1").textContent=BODA.novia;$("n2").textContent=BODA.novio;
 $("m1").textContent=BODA.novia[0];$("m2").textContent=BODA.novio[0];
 document.title=`${BODA.novia} y ${BODA.novio} · Nuestra boda`;
 $("fechaTxt").textContent=fmtF(y,m,d);
-$("hCer").textContent=fmtH(BODA.agenda[0][0]);$("hRec").textContent=fmtH(BODA.agenda[1][0]);
+$("hCer").textContent=fmtH(BODA.agenda[0][0]);
 const[ly,lm,ld]=BODA.limite.split("-").map(Number);$("limite").textContent=fmtF(ly,lm,ld);
-$("cupos").textContent=cupos;$("acomp").max=cupos-1;$("gAcomp").hidden=cupos<2;
+$("cupos").textContent=cupos;
 if(q.get("para"))$("nombre").value=q.get("para");
 $("tl").innerHTML=BODA.agenda.map(([t,n,i],k)=>`<li class="${k%2?"r":""}"><svg class="ic" viewBox="0 0 44 44" aria-hidden="true"><use href="#i${i}"/></svg><span class="nd" aria-hidden="true">♥</span><div class="tx"><b>${fmtH(t)}</b>${n}</div></li>`).join("");
 
@@ -31,14 +31,23 @@ function tick(){const now=new Date();
 tick();setInterval(tick,1000);
 
 // Formulario
-document.querySelectorAll('input[name="asiste"]').forEach(r=>r.addEventListener("change",()=>{if(cupos>1)$("gAcomp").hidden=r.value.startsWith("No")&&r.checked}));
+const acomp=$("acomp"),maxAcomp=cupos-1;
+acomp.max=maxAcomp;
+function actualizarAcompanantes(){
+ const respuesta=document.querySelector('input[name="asiste"]:checked');
+ const ocultar=maxAcomp===0||respuesta?.value.startsWith("No")===true;
+ $("gAcomp").hidden=ocultar;
+ acomp.disabled=ocultar;
+}
+actualizarAcompanantes();
+document.querySelectorAll('input[name="asiste"]').forEach(r=>r.addEventListener("change",actualizarAcompanantes));
 $("rsvp").addEventListener("submit",e=>{e.preventDefault();
  const nombre=$("nombre").value.trim(),sel=document.querySelector('input[name="asiste"]:checked');
  $("eNombre").textContent=nombre?"":"Escribe tu nombre completo.";$("eAsiste").textContent=sel?"":"Elige una opción.";
  if(!nombre||!sel)return;
- const va=sel.value.startsWith("Sí"),ac=va&&cupos>1?Math.min($("acomp").value||0,cupos-1):0,resp=$("resp").value.trim(),msg=$("msg").value.trim();
- try{localStorage.setItem("rsvp-boda",JSON.stringify({nombre,asiste:sel.value,ac,resp,msg}))}catch(_){}
- const t=`Hola, soy ${nombre}. ${sel.value}.`+(va?` Acompañantes: ${ac}.`:"")+(resp?` Restricciones: ${resp}.`:"")+(msg?` Mensaje: ${msg}`:"");
+ const va=sel.value.startsWith("Sí"),ac=va&&maxAcomp>0?Math.min(Math.max(0,parseInt(acomp.value,10)||0),maxAcomp):0,msg=$("msg").value.trim();
+ try{localStorage.setItem("rsvp-boda",JSON.stringify({nombre,asiste:sel.value,ac,msg}))}catch(_){}
+ const t=`Hola, soy ${nombre}. ${sel.value}.`+(va&&maxAcomp>0?` Acompañantes: ${ac}.`:"")+(msg?` Mensaje: ${msg}`:"");
  $("wa").href=`https://wa.me/${BODA.whatsapp}?text=${encodeURIComponent(t)}`;
  $("tNombre").textContent=nombre.split(" ")[0];
  $("tTxt").textContent=va?"Nos hace muy felices que nos acompañes. Envía tu confirmación por WhatsApp para que la recibamos.":"Lamentamos que no puedas venir. Envía tu respuesta por WhatsApp para avisarnos.";
